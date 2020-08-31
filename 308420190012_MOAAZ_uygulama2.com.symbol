@@ -1,0 +1,22 @@
+< THE SYMBOL TABLE >  308420190012_MOAAZ_uygulama2.com  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+NUMS                     	00102     	2         	VAR       	(NOSEG)   
+RESTMAX                  	00116     	2         	VAR       	(NOSEG)   
+RESTMIN                  	00118     	2         	VAR       	(NOSEG)   
+RESTAVG                  	0011A     	2         	VAR       	(NOSEG)   
+CODE                     	0011C     	-1        	LABEL     	(NOSEG)   
+FIND_MAX                 	0012F     	-1        	LABEL     	(NOSEG)   
+RETURN_MAX               	0013B     	-1        	LABEL     	(NOSEG)   
+CHANGE_MAX               	00141     	-1        	LABEL     	(NOSEG)   
+END_MAX                  	00146     	-1        	LABEL     	(NOSEG)   
+FIND_MIN                 	00153     	-1        	LABEL     	(NOSEG)   
+RETURN_MIN               	0015F     	-1        	LABEL     	(NOSEG)   
+CHANGE_MIN               	00165     	-1        	LABEL     	(NOSEG)   
+END_MIN                  	0016A     	-1        	LABEL     	(NOSEG)   
+SUM                      	00173     	-1        	LABEL     	(NOSEG)   
+===================================================================================================
+[ 31-Aug-20  --  17:05:10 ] 
+< END >
+ 

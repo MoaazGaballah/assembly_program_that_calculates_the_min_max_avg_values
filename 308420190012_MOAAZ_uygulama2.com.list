@@ -1,0 +1,93 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+308420190012_MOAAZ_uygulama2.com -- emu8086 assembler version: 4.08  
+ 
+[ 31-Aug-20  --  17:05:10 ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       ;find maximum
+[   2]        :                                       org 100h
+[   3]    0100: EB 1A                                 .data
+[   4]    0102: 8B FF 3D 01 C1 FD 7B 01 54 02 50 FB   NUMS dw -117,317,-575,379,596,-1200,649,15,-145,1331  ;array
+                89 02 0F 00 6F FF 33 05             
+[   5]    0116: 01 00                                 RESTMAX dw 1
+[   6]    0118: 01 00                                 RESTMIN dw 1
+[   7]    011A: 01 00                                 RESTAVG dw 1
+[   8]    011C:                                       .code
+[   9]        :                                       
+[  10]    011C: BF 14 00                              mov di,20 ; this is array size
+[  11]    011F: BD 02 00                              mov bp,2 ; this is to choose segnment(byte=1, word=2, Double Word=4)
+[  12]        :                                       
+[  13]    0122: BE 00 00                              mov si,0
+[  14]    0125: 8B 9C 02 01                           mov bx,NUMS[si] ;assuming the first element in the array is the max
+[  15]    0129: 89 1E 16 01                           mov RESTMAX,bx
+[  16]    012D: 03 F5                                 add si,bp
+[  17]    012F:                                       find_max:
+[  18]    012F: 8B 84 02 01                           mov ax,NUMS[si]
+[  19]    0133: 03 F5                                 add si,bp
+[  20]    0135: 39 06 16 01                           cmp RESTMAX,ax
+[  21]    0139: 7E 06                                 jle change_max
+[  22]    013B:                                       return_max:
+[  23]    013B: 3B F7                                 cmp si,di
+[  24]    013D: 75 F0                                 jnz find_max
+[  25]    013F: 74 05                                 jz end_max
+[  26]        :                                       
+[  27]        :                                       
+[  28]    0141:                                       change_max:
+[  29]    0141: A3 16 01                              mov RESTMAX,ax
+[  30]    0144: EB F5                                 jmp return_max
+[  31]        :                                       
+[  32]        :                                       
+[  33]    0146:                                       end_max:
+[  34]        :                                       ;********************************************
+[  35]        :                                       ;********************************************
+[  36]        :                                       ;find minimum
+[  37]    0146: BE 00 00                              mov si,0
+[  38]    0149: 8B 9C 02 01                           mov bx,NUMS[si] ;assuming the first element in the array is the min
+[  39]    014D: 89 1E 18 01                           mov RESTMIN,bx
+[  40]    0151: 03 F5                                 add si,bp
+[  41]    0153:                                       find_min:
+[  42]    0153: 8B 84 02 01                           mov ax,NUMS[si]
+[  43]    0157: 03 F5                                 add si,bp
+[  44]    0159: 39 06 18 01                           cmp RESTMIN,ax
+[  45]    015D: 7D 06                                 jge change_min
+[  46]    015F:                                       return_min:
+[  47]    015F: 3B F7                                 cmp si,di
+[  48]    0161: 75 F0                                 jnz find_min
+[  49]    0163: 74 05                                 jz end_min
+[  50]        :                                       
+[  51]        :                                       
+[  52]    0165:                                       change_min:
+[  53]    0165: A3 18 01                              mov RESTMIN,ax
+[  54]    0168: EB F5                                 jmp return_min
+[  55]        :                                       
+[  56]    016A:                                       end_min:
+[  57]        :                                       ;********************************************
+[  58]        :                                       ;********************************************
+[  59]        :                                       ;average
+[  60]    016A: BE 00 00                              mov si,00
+[  61]    016D: B8 00 00                              mov ax,00
+[  62]    0170: BB 0A 00                              mov bx,10 ; count of array's element
+[  63]        :                                       
+[  64]        :                                       ;sum of the array
+[  65]    0173:                                       sum:
+[  66]    0173: 03 84 02 01                           add ax,NUMS[si]
+[  67]    0177: 03 F5                                 add si,bp
+[  68]    0179: 3B F7                                 cmp si,di
+[  69]    017B: 75 F6                                 jnz sum
+[  70]        :                                       
+[  71]        :                                       ;average = sum/(length) ---> (dx,ax)/bx
+[  72]    017D: F7 F3                                 div bx
+[  73]    017F: A3 1A 01                              mov RESTAVG,ax
+[  74]        :                                       
+ 
+===================================================================================================
+ 
+
+
+
+
+===================================================================================================
